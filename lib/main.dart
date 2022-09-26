@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Al-Azan',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
           ),
           home:AnimatedSplashScreen(
           splash: Stack(
