@@ -2,6 +2,7 @@ import 'package:al_azan/layout/home.dart';
 import 'package:al_azan/shared/Network/remote/dio_helper.dart';
 import 'package:al_azan/shared/cubit/cubit.dart';
 import 'package:al_azan/shared/cubit/states.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,11 +30,25 @@ class MyApp extends StatelessWidget {
       builder:(context,state){
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'Al-Azan',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home:const Home(),
+          home:AnimatedSplashScreen(
+          splash: Stack(
+            children: const [
+              Center(
+                child: Image(
+                  image: AssetImage('images/sp.png'),
+                ),
+              ),
+            ],
+          ),
+            nextScreen: const Home(),
+            splashTransition: SplashTransition.scaleTransition,
+            duration: 3000,
+            backgroundColor: Colors.white,
+          )
         );
       },
     )
